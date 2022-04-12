@@ -9,6 +9,23 @@ const getItems = async () => {
     return response.data;
 };
 
+// function to post items from the backend
+
+const postItem = async ( item : Omit<IItem, 'id'> ) => {
+    const response = await axios.post<IItem>(
+        `${baseUrl}/items`,
+        item,
+        {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+    );
+
+    return response.data;
+};
+
 export {
-    getItems
+    getItems,
+    postItem
 };
